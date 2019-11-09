@@ -36,6 +36,16 @@ export const TypeaheadZ: FC<Props> = ({ data }) => {
         filterItems(clickedItemText)
     }
 
+    const AutoCompleteItems: FC<{ items: string[] }> = ({ items }) => (
+        <ul>
+            {items.map(item => (
+                <li key={item} onClick={onClickAutocompleteItem}>
+                    {item}
+                </li>
+            ))}
+        </ul>
+    )
+
     return (
         <form>
             <h1>Typeahead-Z!</h1>
@@ -45,13 +55,9 @@ export const TypeaheadZ: FC<Props> = ({ data }) => {
                 value={inputValue}
                 onChange={onChangeInput}
             />
-            <ul>
-                {autocompleteItems.map(item => (
-                    <li key={item} onClick={onClickAutocompleteItem}>
-                        {item}
-                    </li>
-                ))}
-            </ul>
+            {!autocompleteItems.length || inputValue === '' ? null : (
+                <AutoCompleteItems items={autocompleteItems} />
+            )}
         </form>
     )
 }
