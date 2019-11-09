@@ -49,6 +49,8 @@ export const TypeaheadZ: FC<Props> = ({ data }) => {
             {items.map(item => (
                 <li
                     key={item}
+                    role="option"
+                    aria-selected={false} // TODO
                     onClick={onClickAutocompleteItem}
                     className={styles.autocompleteItem}
                 >
@@ -63,7 +65,11 @@ export const TypeaheadZ: FC<Props> = ({ data }) => {
     return (
         <form>
             <h1>Typeahead-Z!</h1>
-            <div className={styles.wrapper}>
+            <div
+                className={styles.wrapper}
+                role="combobox"
+                aria-expanded={isExpanded}
+            >
                 <input
                     className={styles.input}
                     type="text"
