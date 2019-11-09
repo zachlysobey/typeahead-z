@@ -39,7 +39,11 @@ export const TypeaheadZ: FC<Props> = ({ data }) => {
     const AutoCompleteItems: FC<{ items: string[] }> = ({ items }) => (
         <ul>
             {items.map(item => (
-                <li key={item} onClick={onClickAutocompleteItem}>
+                <li
+                    key={item}
+                    onClick={onClickAutocompleteItem}
+                    style={{ cursor: 'pointer' }}
+                >
                     {item}
                 </li>
             ))}
