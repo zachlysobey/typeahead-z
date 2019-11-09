@@ -70,5 +70,3 @@ export const TypeaheadZ: FC<Props> = ({ data }) => {
         </form>
     )
 }
-
-// export const TypeaheadZ = CssModules(RawTypeaheadZ, styles)
