@@ -52,6 +52,8 @@ export const TypeaheadZ: FC<Props> = ({ data }) => {
         </ul>
     )
 
+    const isExpanded: boolean = !!autocompleteItems.length && inputValue !== ''
+
     return (
         <form>
             <h1>Typeahead-Z!</h1>
@@ -63,9 +65,7 @@ export const TypeaheadZ: FC<Props> = ({ data }) => {
                     value={inputValue}
                     onChange={onChangeInput}
                 />
-                {!autocompleteItems.length || inputValue === '' ? null : (
-                    <AutoCompleteItems items={autocompleteItems} />
-                )}
+                {isExpanded && <AutoCompleteItems items={autocompleteItems} />}
             </div>
         </form>
     )
