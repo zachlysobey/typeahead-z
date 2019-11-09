@@ -1,19 +1,39 @@
-import React, { useState, FC, ReactEventHandler, ChangeEvent } from 'react'
+import React, {
+    useState,
+    FC,
+    ReactEventHandler,
+    ChangeEvent,
+    MouseEvent,
+} from 'react'
 
 interface Props {
     data: string[]
 }
 export const TypeaheadZ: FC<Props> = ({ data }) => {
+    const [inputValue, setInputValue] = useState('')
     const [autocompleteItems, setAutocompleteItems] = useState(data)
 
-    const onChange: ReactEventHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        const text = e.target.value
-        console.log('onChange', text)
-        setAutocompleteItems(
-            data.filter(item =>
-                item.toLowerCase().includes(text.toLowerCase()),
-            ),
+    const filterItems = (text: string): void => {
+        const filteredItems = data.filter(item =>
+            item.toLowerCase().includes(text.toLowerCase()),
         )
+        setAutocompleteItems(filteredItems)
+    }
+
+    const onChangeInput: ReactEventHandler = (
+        e: ChangeEvent<HTMLInputElement>,
+    ) => {
+        const text = e.target.value
+        setInputValue(text)
+        filterItems(text)
+    }
+
+    const onClickAutocompleteItem: ReactEventHandler = (
+        e: MouseEvent<HTMLLIElement>,
+    ) => {
+        const clickedItemText = e.currentTarget.innerHTML
+        setInputValue(clickedItemText)
+        filterItems(clickedItemText)
     }
 
     return (
@@ -22,11 +42,14 @@ export const TypeaheadZ: FC<Props> = ({ data }) => {
             <input
                 type="text"
                 placeholder="cool stuff here soon..."
-                onChange={onChange}
+                value={inputValue}
+                onChange={onChangeInput}
             />
             <ul>
                 {autocompleteItems.map(item => (
-                    <li key={item}>{item}</li>
+                    <li key={item} onClick={onClickAutocompleteItem}>
+                        {item}
+                    </li>
                 ))}
             </ul>
         </form>
