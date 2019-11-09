@@ -1,17 +1,12 @@
 import React from 'react'
-import { Provider } from 'react-redux'
 
-import { store } from './store'
-
-import { Incrementor } from './components/Incrementor'
+import { TypeaheadZ } from './components/TypeaheadZ'
 
 function App() {
     return (
-        <Provider store={store}>
-            <div className="app">
-                <Incrementor />
-            </div>
-        </Provider>
+        <div className="app">
+            <TypeaheadZ />
+        </div>
     )
 }
 
