@@ -6,6 +6,8 @@ import React, {
     MouseEvent,
 } from 'react'
 
+import styles from './TypeaheadZ.module.css'
+
 interface Props {
     data: string[]
 }
@@ -37,12 +39,12 @@ export const TypeaheadZ: FC<Props> = ({ data }) => {
     }
 
     const AutoCompleteItems: FC<{ items: string[] }> = ({ items }) => (
-        <ul>
+        <ul className={styles.autocompleteItemList}>
             {items.map(item => (
                 <li
                     key={item}
                     onClick={onClickAutocompleteItem}
-                    style={{ cursor: 'pointer' }}
+                    className={styles.autocompleteItem}
                 >
                     {item}
                 </li>
@@ -53,15 +55,20 @@ export const TypeaheadZ: FC<Props> = ({ data }) => {
     return (
         <form>
             <h1>Typeahead-Z!</h1>
-            <input
-                type="text"
-                placeholder="cool stuff here soon..."
-                value={inputValue}
-                onChange={onChangeInput}
-            />
-            {!autocompleteItems.length || inputValue === '' ? null : (
-                <AutoCompleteItems items={autocompleteItems} />
-            )}
+            <div className={styles.wrapper}>
+                <input
+                    className={styles.input}
+                    type="text"
+                    placeholder="cool stuff here soon..."
+                    value={inputValue}
+                    onChange={onChangeInput}
+                />
+                {!autocompleteItems.length || inputValue === '' ? null : (
+                    <AutoCompleteItems items={autocompleteItems} />
+                )}
+            </div>
         </form>
     )
 }
+
+// export const TypeaheadZ = CssModules(RawTypeaheadZ, styles)

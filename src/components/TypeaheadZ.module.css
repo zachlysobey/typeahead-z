@@ -1,0 +1,24 @@
+.wrapper {
+    max-width: 300px;
+}
+.wrapper input:focus+.autocompleteItemList,
+.wrapper:hover .autocompleteItemList {
+    display: block;
+}
+.autocompleteItemList{
+    display: none;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid grey;
+    max-height: 6em;
+    overflow-y: scroll;
+}
+
+.autocompleteItem {
+    cursor: pointer;
+}
+
+.autocompleteItem:hover {
+    background: #ccc;
+}
