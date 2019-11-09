@@ -1,4 +1,4 @@
-export const typeaheadData: string[] = [
+export const fruitNames: string[] = [
     'Açaí',
     'Apple',
     'Akee',

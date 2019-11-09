@@ -1,8 +1,9 @@
 import React from 'react'
 
-import { typeaheadData } from './typeahead-data'
-
-export const TypeaheadZ: React.FC<{}> = () => {
+interface Props {
+    data: string[]
+}
+export const TypeaheadZ: React.FC<Props> = ({ data }) => {
     return (
         <form>
             <h1>Typeahead-Z!</h1>
@@ -12,7 +13,7 @@ export const TypeaheadZ: React.FC<{}> = () => {
                 onChange={e => console.log('onChange', e.target.value)}
             />
             <ul>
-                {typeaheadData.map(item => (
+                {data.map(item => (
                     <li key={item}>{item}</li>
                 ))}
             </ul>
