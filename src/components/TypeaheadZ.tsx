@@ -4,7 +4,9 @@ import React, {
     ReactEventHandler,
     ChangeEvent,
     MouseEvent,
+    KeyboardEventHandler,
 } from 'react'
+import keycode from 'keycode'
 
 import styles from './TypeaheadZ.module.css'
 
@@ -28,6 +30,10 @@ export const TypeaheadZ: FC<Props> = ({ data }) => {
         const text = e.target.value
         setInputValue(text)
         filterItems(text)
+    }
+
+    const onKeyDown: KeyboardEventHandler = e => {
+        console.log('onKeyDown', keycode(e.keyCode))
     }
 
     const onClickAutocompleteItem: ReactEventHandler = (
@@ -64,6 +70,7 @@ export const TypeaheadZ: FC<Props> = ({ data }) => {
                     placeholder="cool stuff here soon..."
                     value={inputValue}
                     onChange={onChangeInput}
+                    onKeyDown={onKeyDown}
                 />
                 {isExpanded && <AutoCompleteItems items={autocompleteItems} />}
             </div>
