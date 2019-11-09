@@ -1,9 +1,17 @@
 import React from 'react'
 
-export function TypeaheadZ() {
+import { typeaheadData } from './typeahead-data'
+
+export const TypeaheadZ: React.FC<{}> = () => {
     return (
-        <div>
+        <form>
             <h1>Typeahead-Z!</h1>
-        </div>
+            <input type="text" placeholder="cool stuff here soon..." />
+            <ul>
+                {typeaheadData.map(item => (
+                    <li key={item}>{item}</li>
+                ))}
+            </ul>
+        </form>
     )
 }
