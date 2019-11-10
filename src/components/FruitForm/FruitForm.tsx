@@ -14,10 +14,6 @@ export const FruitForm: FC = () => {
                 alert(JSON.stringify(formValues))
                 e.preventDefault()
             }}
-            style={{
-                margin: '0 auto',
-                width: '600px',
-            }}
         >
             <TypeaheadZ
                 data={fruitNames}
