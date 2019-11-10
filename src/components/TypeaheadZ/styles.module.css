@@ -1,5 +1,4 @@
 input:focus+.autocompleteItemList {
-    display: block;
     box-shadow: 1px 1px 1px #ccc;
 }
 
@@ -9,7 +8,6 @@ input:focus+.autocompleteItemList {
 }
 
 .autocompleteItemList{
-    display: none;
     list-style-type: none;
     padding: 0;
     margin: 0;
