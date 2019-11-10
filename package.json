@@ -13,7 +13,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "precommit": "CI=true npm test && lint-staged",
+    "precommit": "CI=true npm test && npm run build && lint-staged",
     "prettier": "prettier --write **/*.{ts,tsx,js,json,md,yml,yaml}",
     "predeploy": "npm run build",
     "deploy": "gh-pages --dist build"
