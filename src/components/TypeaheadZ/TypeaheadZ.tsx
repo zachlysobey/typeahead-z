@@ -49,7 +49,7 @@ export const TypeaheadZ: FC<TypeaheadZProps> = ({
         filterBy(text)
     }
 
-    const onClickAutocompleteItem: ReactEventHandler = (
+    const onClickSuggestion: ReactEventHandler = (
         e: MouseEvent<HTMLLIElement>,
     ) => {
         const clickedItemText = e.currentTarget.innerText
@@ -111,7 +111,7 @@ export const TypeaheadZ: FC<TypeaheadZProps> = ({
                     currentText={inputValue}
                     suggestions={suggestions}
                     selectedSuggestion={selectedSuggestion}
-                    onSelect={onClickAutocompleteItem}
+                    onSelect={onClickSuggestion}
                     onMouseOverSuggestion={index => selectSuggestion(index)}
                 />
             )}
