@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/typeahead-z/static/css/main.032384cb.chunk.css",
+    "main.js": "/typeahead-z/static/js/main.0649e0dd.chunk.js",
+    "main.js.map": "/typeahead-z/static/js/main.0649e0dd.chunk.js.map",
+    "runtime-main.js": "/typeahead-z/static/js/runtime-main.d52fe325.js",
+    "runtime-main.js.map": "/typeahead-z/static/js/runtime-main.d52fe325.js.map",
+    "static/js/2.3deab250.chunk.js": "/typeahead-z/static/js/2.3deab250.chunk.js",
+    "static/js/2.3deab250.chunk.js.map": "/typeahead-z/static/js/2.3deab250.chunk.js.map",
+    "index.html": "/typeahead-z/index.html",
+    "precache-manifest.53b6352207f4a61b4d578f4de1a71515.js": "/typeahead-z/precache-manifest.53b6352207f4a61b4d578f4de1a71515.js",
+    "service-worker.js": "/typeahead-z/service-worker.js",
+    "static/css/main.032384cb.chunk.css.map": "/typeahead-z/static/css/main.032384cb.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d52fe325.js",
+    "static/js/2.3deab250.chunk.js",
+    "static/css/main.032384cb.chunk.css",
+    "static/js/main.0649e0dd.chunk.js"
+  ]
+}
