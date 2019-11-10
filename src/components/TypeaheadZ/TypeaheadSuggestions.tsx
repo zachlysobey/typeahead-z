@@ -21,8 +21,8 @@ export const TypeaheadSuggestions: FC<TypeaheadSuggestionsProps> = ({
 }) => {
     const highlightMatching = (item: string) =>
         item.replace(
-            currentText,
-            `<span style="text-decoration: underline">${currentText}</span>`,
+            new RegExp(`(${currentText})`, 'i'),
+            `<span style="text-decoration: underline">$1</span>`,
         )
     return (
         <ul className={styles.autocompleteItemList}>

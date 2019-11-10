@@ -52,8 +52,7 @@ export const TypeaheadZ: FC<TypeaheadZProps> = ({
     const onClickAutocompleteItem: ReactEventHandler = (
         e: MouseEvent<HTMLLIElement>,
     ) => {
-        const clickedItemText = e.currentTarget.innerHTML
-        console.log('setting to ', clickedItemText)
+        const clickedItemText = e.currentTarget.innerText
         setInputValue(clickedItemText)
         onChange(clickedItemText)
         filterBy(clickedItemText)
