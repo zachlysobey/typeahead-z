@@ -2,9 +2,31 @@
 
 [![Actions Status](https://github.com/zachlysobey/typeahead-z/workflows/Node%20CI/badge.svg)](https://github.com/zachlysobey/typeahead-z/actions)
 
-## Architecture
+See it in action on [github pages](https://zachlysobey.github.io/typeahead-z/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Usage
+
+### Pre-requisites
+
+-   NodeJS
+-   NPM
+
+**NOTE**: the build has only been tested with Node v12, though it is likely to work elsewhere.
+
+```tsx
+<TypeaheadZ
+    data={['one', 'two', 'three']}
+    onChange={value => console.log(value)}
+    placeholder="start typing..."
+/>
+```
+
+### Run the demo:
+
+```sh
+$ npm install
+$ npm start
+```
 
 ## Available npm scripts
 
