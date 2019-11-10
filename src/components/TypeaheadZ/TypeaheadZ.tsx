@@ -26,7 +26,7 @@ export const TypeaheadZ: FC<TypeaheadZProps> = ({
 }) => {
     const [inputValue, setInputValue] = useState('')
     const [suggestions, setSuggestions] = useState(
-        data.splice(0, maxSuggestions),
+        data.slice(0, maxSuggestions),
     )
     const [isExpanded, setIsExpanded] = useState(false)
     const [selectedSuggestion, selectSuggestion] = useState<null | number>(null)
@@ -34,7 +34,7 @@ export const TypeaheadZ: FC<TypeaheadZProps> = ({
     const filterBy = (text: string): void => {
         const filteredSuggestions = data
             .filter(item => item.toLowerCase().includes(text.toLowerCase()))
-            .splice(0, maxSuggestions)
+            .slice(0, maxSuggestions)
         setSuggestions(filteredSuggestions)
         if (filteredSuggestions.length > 0 && text !== '') {
             setIsExpanded(true)
