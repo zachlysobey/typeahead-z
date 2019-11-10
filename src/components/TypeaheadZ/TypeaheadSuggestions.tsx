@@ -5,6 +5,7 @@ import { TypeaheadSuggestion } from './TypeaheadSuggestion'
 import styles from './styles.module.css'
 
 interface TypeaheadSuggestionsProps {
+    currentText: string
     suggestions: string[]
     selectedSuggestion: null | number
     onMouseOverSuggestion: (index: number) => void
@@ -12,14 +13,20 @@ interface TypeaheadSuggestionsProps {
 }
 
 export const TypeaheadSuggestions: FC<TypeaheadSuggestionsProps> = ({
+    currentText,
     suggestions,
     selectedSuggestion,
     onMouseOverSuggestion,
     onSelect,
 }) => {
+    const highlightMatching = (item: string) =>
+        item.replace(
+            currentText,
+            `<span style="text-decoration: underline">${currentText}</span>`,
+        )
     return (
         <ul className={styles.autocompleteItemList}>
-            {suggestions.map((item: string, i) => {
+            {suggestions.map(highlightMatching).map((item: string, i) => {
                 return (
                     <TypeaheadSuggestion
                         key={item}

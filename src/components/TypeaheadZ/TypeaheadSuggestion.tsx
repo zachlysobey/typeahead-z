@@ -21,8 +21,7 @@ export const TypeaheadSuggestion: FC<TypeaheadSuggestionProps> = ({
                 styles.autocompleteItem
             }`}
             onMouseOver={onMouseOver}
-        >
-            {value}
-        </li>
+            dangerouslySetInnerHTML={{ __html: value }}
+        />
     )
 }

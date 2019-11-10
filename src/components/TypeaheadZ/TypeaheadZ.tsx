@@ -113,6 +113,7 @@ export const TypeaheadZ: FC<TypeaheadZProps> = ({
             />
             {isExpanded && (
                 <TypeaheadSuggestions
+                    currentText={inputValue}
                     suggestions={suggestions}
                     selectedSuggestion={selectedSuggestion}
                     onSelect={onClickAutocompleteItem}
