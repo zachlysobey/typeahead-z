@@ -70,7 +70,7 @@ export const TypeaheadZ: FC<TypeaheadZProps> = ({
                 setIsExpanded(suggestions.length > 0)
                 if (selectedSuggestion === null) {
                     selectSuggestion(0)
-                } else if (selectedSuggestion !== maxSuggestions - 1) {
+                } else if (selectedSuggestion !== suggestions.length - 1) {
                     selectSuggestion(selectedSuggestion + 1)
                 }
                 break
