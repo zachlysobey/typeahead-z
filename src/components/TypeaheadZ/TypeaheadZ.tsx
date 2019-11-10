@@ -13,28 +13,24 @@ import styles from './styles.module.css'
 
 interface TypeaheadZProps {
     data: string[]
-    maxSuggestions?: number
     placeholder?: string
     onChange?: (value: string) => void
 }
 
 export const TypeaheadZ: FC<TypeaheadZProps> = ({
     data,
-    maxSuggestions = 5,
     placeholder = '',
     onChange = () => {},
 }) => {
     const [inputValue, setInputValue] = useState('')
-    const [suggestions, setSuggestions] = useState(
-        data.slice(0, maxSuggestions),
-    )
+    const [suggestions, setSuggestions] = useState(data)
     const [isExpanded, setIsExpanded] = useState(false)
     const [selectedSuggestion, selectSuggestion] = useState<null | number>(null)
 
     const filterBy = (text: string): void => {
-        const filteredSuggestions = data
-            .filter(item => item.toLowerCase().includes(text.toLowerCase()))
-            .slice(0, maxSuggestions)
+        const filteredSuggestions = data.filter(item =>
+            item.toLowerCase().includes(text.toLowerCase()),
+        )
         setSuggestions(filteredSuggestions)
         if (filteredSuggestions.length > 0 && text !== '') {
             setIsExpanded(true)

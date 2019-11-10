@@ -16,6 +16,7 @@ input:focus+.autocompleteItemList {
     border: 1px solid grey;
     overflow-y: scroll;
     box-sizing: border-box;
+    max-height: 5em;
 }
 
 .autocompleteItem {
