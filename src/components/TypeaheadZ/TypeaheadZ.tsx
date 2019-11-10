@@ -84,6 +84,7 @@ export const TypeaheadZ: FC<TypeaheadZProps> = ({
                 }
                 break
             case 'enter':
+            case 'tab':
                 if (isExpanded) {
                     e.preventDefault()
                 }
