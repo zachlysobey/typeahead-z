@@ -7,21 +7,24 @@ import React, {
     KeyboardEventHandler,
 } from 'react'
 import keycode from 'keycode'
+import { TypeaheadSuggestions } from './TypeaheadSuggestions'
 
 import styles from './TypeaheadZ.module.css'
 
-interface Props {
+interface TypeaheadZProps {
     data: string[]
 }
-export const TypeaheadZ: FC<Props> = ({ data }) => {
+export const TypeaheadZ: FC<TypeaheadZProps> = ({ data }) => {
     const [inputValue, setInputValue] = useState('')
-    const [autocompleteItems, setAutocompleteItems] = useState(data)
+    const [suggestions, setTypeaheadSuggestions] = useState(data)
+    const [isExpanded, setIsExpanded] = useState(false)
 
     const filterItems = (text: string): void => {
         const filteredItems = data.filter(item =>
             item.toLowerCase().includes(text.toLowerCase()),
         )
-        setAutocompleteItems(filteredItems)
+        setTypeaheadSuggestions(filteredItems)
+        setIsExpanded(filteredItems.length > 0 && text !== '')
     }
 
     const onChangeInput: ReactEventHandler = (
@@ -32,10 +35,6 @@ export const TypeaheadZ: FC<Props> = ({ data }) => {
         filterItems(text)
     }
 
-    const onKeyDown: KeyboardEventHandler = e => {
-        console.log('onKeyDown', keycode(e.keyCode))
-    }
-
     const onClickAutocompleteItem: ReactEventHandler = (
         e: MouseEvent<HTMLLIElement>,
     ) => {
@@ -44,36 +43,31 @@ export const TypeaheadZ: FC<Props> = ({ data }) => {
         filterItems(clickedItemText)
     }
 
-    const AutoCompleteItems: FC<{ items: string[] }> = ({ items }) => (
-        <ul className={styles.autocompleteItemList}>
-            {items.map(item => (
-                <li
-                    key={item}
-                    onClick={onClickAutocompleteItem}
-                    className={styles.autocompleteItem}
-                >
-                    {item}
-                </li>
-            ))}
-        </ul>
-    )
-
-    const isExpanded: boolean = !!autocompleteItems.length && inputValue !== ''
+    const onKeyDown: KeyboardEventHandler = e => {
+        const key = keycode(e.keyCode)
+        switch (key) {
+            case 'down':
+            default:
+                console.log('onKeyDown', key)
+        }
+    }
 
     return (
-        <form>
-            <h1>Typeahead-Z!</h1>
-            <div className={styles.wrapper}>
-                <input
-                    className={styles.input}
-                    type="text"
-                    placeholder="cool stuff here soon..."
-                    value={inputValue}
-                    onChange={onChangeInput}
-                    onKeyDown={onKeyDown}
+        <div className={styles.wrapper}>
+            <input
+                className={styles.input}
+                type="text"
+                placeholder="cool stuff here soon..."
+                value={inputValue}
+                onChange={onChangeInput}
+                onKeyDown={onKeyDown}
+            />
+            {isExpanded && (
+                <TypeaheadSuggestions
+                    suggestions={suggestions}
+                    onClick={onClickAutocompleteItem}
                 />
-                {isExpanded && <AutoCompleteItems items={autocompleteItems} />}
-            </div>
-        </form>
+            )}
+        </div>
     )
 }
